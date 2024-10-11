@@ -4,8 +4,7 @@ MAIN = test.o
 
 OUT=Overflow
 
-FLAGS+=-Wall -Wextra -Werror=pedantic
-LDFLAGD=-g
+FLAGS+=-Wall -Wextra -Werror=pedantic -g
 CC=gcc
 
 all: $(OBJS) $(MAIN)
