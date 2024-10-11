@@ -10,3 +10,6 @@ CC=gcc
 
 all: $(OBJS) $(MAIN)
 	$(CC) $(OBJS) $(MAIN) -o $(OUT) $(FLAGS) $(LDFLAGD)
+
+clean: $(OBJS) $(MAIN)
+	rm $(OBJS) $(MAIN)
