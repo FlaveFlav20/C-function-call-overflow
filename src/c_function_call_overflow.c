@@ -3,8 +3,8 @@
 
 #include <string.h>
 
-char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
-size_t alphabet_len = 53;
+char alphabet[] = "abcdefghjklmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
+size_t alphabet_len = 51;
 
 static size_t find_index(char c)
 {

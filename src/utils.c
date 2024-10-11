@@ -67,3 +67,15 @@ void free_buffer(struct Buffer **buffer)
     free(*buffer);
     *buffer = NULL;
 }
+
+
+size_t str_to_size_t(char *str)
+{
+    size_t value = 0;
+    for (size_t i = 0; i < strlen(str); i++)
+    {   
+        value *= 10;
+        value += str[i] - '0';
+    }
+    return value;
+}

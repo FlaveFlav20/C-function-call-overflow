@@ -1,9 +1,15 @@
 #include "src/includes/c_function_call_overflow.h"
 #include "src/includes/utils.h"
 
-int main(void)
+int main(int argc, char* argv[])
 {
-    size_t size = 100;
+    size_t size;
+    if (argc < 2)
+        size = 100;
+    else
+    {
+        size = str_to_size_t(argv[1]);
+    }
     FILE *file_ = fopen("te.c", "w");
     if (!file_)
         return -1;

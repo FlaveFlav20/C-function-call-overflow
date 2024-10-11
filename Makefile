@@ -11,4 +11,4 @@ all: $(OBJS) $(MAIN)
 	$(CC) $(OBJS) $(MAIN) -o $(OUT) $(FLAGS) $(LDFLAGD)
 
 clean: $(OBJS) $(MAIN)
-	rm $(OBJS) $(MAIN)
+	rm $(OBJS) $(MAIN) t.c te.c 2> /dev/null
