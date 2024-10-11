@@ -17,6 +17,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
+size_t alphabet_len = 53;
+
 struct Buffer *get_fct(size_t number_args);
 struct Buffer *get_call(size_t number_args);
 void write_call(FILE *file, size_t number_args);
