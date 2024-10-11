@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    size_t size = 1000000;
+    size_t size = 100;
     FILE *file_ = fopen("te.c", "w");
     if (!file_)
         return -1;
