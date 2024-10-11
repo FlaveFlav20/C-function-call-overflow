@@ -18,6 +18,6 @@ bool increase_size(struct Buffer *buffer);
 
 bool add_buffer(struct Buffer *buffer, char *element, size_t size);
 
-void free_buffer(struct Buffer *buffer);
+void free_buffer(struct Buffer **buffer);
 
 #endif // UTILS

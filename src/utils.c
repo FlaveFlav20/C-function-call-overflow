@@ -26,7 +26,7 @@ bool increase_size(struct Buffer *buffer)
     if (!buffer || !buffer->buff)
         return false;
     
-    buffer->buff = realloc(buffer->buff, 2 * buffer->size);
+    buffer->buff = realloc(buffer->buff, 2 * buffer->size + 1);
     if (!buffer->buff)
     {
         free(buffer);
@@ -56,14 +56,14 @@ bool add_buffer(struct Buffer *buffer, char *element, size_t size)
     return true;
 }
 
-void free_buffer(struct Buffer *buffer)
+void free_buffer(struct Buffer **buffer)
 {
-    if (!buffer)
+    if (!buffer || !(*buffer))
         return;
-    if (buffer->buff)
+    if ((*buffer)->buff)
     {
-        free(buffer->buff);
-        return;
+        free((*buffer)->buff);
     }
-    free(buffer);
+    free(*buffer);
+    *buffer = NULL;
 }

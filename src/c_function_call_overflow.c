@@ -65,8 +65,8 @@ static struct Buffer *get_fct_return(size_t number_args, struct Buffer *res, str
     struct Buffer *arg_res = init_buffer();
     if (!arg_res)
     {
-        free_buffer(arg);
-        free_buffer(res);
+        free_buffer(&arg);
+        free_buffer(&res);
         return NULL;
     }
 
@@ -84,7 +84,7 @@ static struct Buffer *get_fct_return(size_t number_args, struct Buffer *res, str
         add_buffer(res, "+", 1);
         increment(arg_res);
     }
-    free_buffer(arg_res);
+    free_buffer(&arg_res);
     return res;
 }
 
@@ -97,7 +97,7 @@ struct Buffer *get_fct(size_t number_args)
     struct Buffer *arg = init_buffer();
     if (!arg)
     {
-        free_buffer(res);
+        free_buffer(&res);
         return NULL;
     }
 
@@ -106,7 +106,7 @@ struct Buffer *get_fct(size_t number_args)
     
     res->curr_size--;
     add_buffer(res, ";}\n\0", 5);
-    free_buffer(arg);
+    free_buffer(&arg);
     return res;
 }
 
@@ -136,7 +136,7 @@ void write_function(FILE *file, size_t number_args)
     if (!buffer)
         return;
     fwrite(buffer->buff, buffer->curr_size, sizeof(char), file);
-    free_buffer(buffer);
+    free_buffer(&buffer);
 }
 
 void write_call(FILE *file, size_t number_args)
@@ -145,5 +145,5 @@ void write_call(FILE *file, size_t number_args)
     if (!buffer)
         return;
     fwrite(buffer->buff, buffer->curr_size, sizeof(char), file);
-    free_buffer(buffer);
+    free_buffer(&buffer);
 }
