@@ -26,14 +26,15 @@
 #define ARG_POP_MORE "(%rbp), %edx\n"
 #define ARG_ADD "\tadd %edx, %eax\n"
 
-#define END_FUNCTION "\tmov %rbp, %rsp\n\tpop %rbp\n\tret"
+#define END_FUNCTION "\tmov %rbp, %rsp\n\tpop %rbp\n\tret\n"
+
+#include "utils.h"
 
 #include <stdio.h>
 /*
  * This program will generate a custom compilator for intel x86 : the main goal is to creata a specific program
 */
 
-int custom_compile(size_t number_args);
-
+int custom_compile(size_t number_args, FILE *file_to_write);
 
 #endif // COMPILATOR_H

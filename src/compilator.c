@@ -10,7 +10,6 @@ static bool push_args(struct Buffer *assembly_code, size_t number_args)
         return false;
     }
 
-
     if (number_args > 0 && !add_buffer(assembly_code, ARG_ONE_FUNCTION_IN_PREPARE,
                                       strlen(ARG_ONE_FUNCTION_IN_PREPARE)))
     {
@@ -141,7 +140,6 @@ bool add_numbers(struct Buffer *assembly_code, size_t number_args)
             return false;
         }
 
-
         i++;
         begin+=8;
     }
@@ -156,9 +154,9 @@ bool add_numbers(struct Buffer *assembly_code, size_t number_args)
     return true;
 }
 
-int custom_compile(size_t number_args)
+int custom_compile(size_t number_args, FILE *file_to_write)
 {
-    if (number_args == 0)
+    if (!number_args || !file_to_write)
         return -1;
 
     struct Buffer *assembly_code = init_buffer();
@@ -171,7 +169,7 @@ int custom_compile(size_t number_args)
     if (!add_numbers(assembly_code, number_args))
         return -1;
 
-    printf("%s\n", assembly_code->buff);
+    fwrite(assembly_code->buff, sizeof(char), assembly_code->curr_size, file_to_write);
     free_buffer(&assembly_code);
     return 0;
 }

@@ -3,8 +3,8 @@
 
 #include <string.h>
 
-char alphabet[] = "abcdefghjklmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
-size_t alphabet_len = 51;
+static char alphabet[] = "abcdefghjklmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
+static size_t alphabet_len = 51;
 
 static size_t find_index(char c)
 {
@@ -76,12 +76,14 @@ static struct Buffer *get_fct_return(size_t number_args, struct Buffer *res, str
     {
         add_buffer(res, arg_res->buff, arg_res->curr_size);
         add_buffer(res, "+", 1);
+
         increment(arg_res);
     }
     while(strncmp(arg_res->buff, arg->buff, arg->curr_size))
     {
         add_buffer(res, arg_res->buff, arg_res->curr_size);
         add_buffer(res, "+", 1);
+
         increment(arg_res);
     }
     free_buffer(&arg_res);
@@ -103,8 +105,8 @@ struct Buffer *get_fct(size_t number_args)
 
     res = get_fct_arg(number_args, res, arg);
     res = get_fct_return(number_args, res, arg);
-    
     res->curr_size--;
+    
     add_buffer(res, ";}\n\0", 5);
     free_buffer(&arg);
     return res;
